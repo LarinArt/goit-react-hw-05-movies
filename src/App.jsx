@@ -12,17 +12,13 @@ const MovieDetailsPage = lazy(() =>
 );
 
 const AppWrapper = styled.div`
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
   background-image: url(${BgImg});
   background-repeat: no-repeat;
   background-attachment: fixed;
-`;
-
-const Copyright = styled.p`
-  position: center;
-  color: rgb(255, 215, 0);
 `;
 
 export const App = () => {
@@ -37,7 +33,6 @@ export const App = () => {
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Suspense>
-      <Copyright>&#169; Copyright</Copyright>
     </AppWrapper>
   );
 };
