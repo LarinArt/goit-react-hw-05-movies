@@ -1,31 +1,26 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { Formik } from 'formik';
 import Notiflix from 'notiflix';
 import { searchMovies } from 'services/movie-api';
 import { Loader } from 'components/Loader/Loader';
 import { MovieList } from 'components/MovieList/MovieList';
-import { Form, Input, Button, Icon } from './MoviePage.style';
+import { StyledForm, StyledInput, StyledButton, Icon } from './MoviePage.style';
 
 const MoviePage = () => {
-  const [searchQuery, setSearchQuery] = useState('');
   const [movies, setMovies] = useState(null);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const handleChange = element => {
-    setSearchQuery(element.currentTarget.value);
-  };
-  const onFormSubmit = element => {
-    element.preventDefault();
-
-    const newQuery = element.target.elements.query.value.toLowerCase();
-    if (newQuery.trim() === '') {
+  const onFormSubmit = value => {
+    if (value.query.trim() === '') {
       Notiflix.Notify.failure("Please, enter correct movie's name");
       return;
-    }
-    setSearchParams({ query: newQuery });
+    } else {
+      const newQuery = value.query !== '' ?  value.query : '';
+      setSearchParams({ 'query': newQuery });}
   };
 
   useEffect(() => {
@@ -42,24 +37,28 @@ const MoviePage = () => {
         })
         .catch(error => setError(error.message))
         .finally(() => setLoading(false));
-      setSearchQuery(searchParams.get('query'));
     }
   }, [searchParams]);
 
   return (
     <>
-      <Form onSubmit={onFormSubmit}>
-        <Input
+    <Formik
+        initialValues={{ query: '' }}
+        onSubmit={value => {
+          onFormSubmit(value);
+        }}
+      >
+      <StyledForm>
+        <StyledInput
           type="text"
           name="query"
-          value={searchQuery}
-          onChange={handleChange}
           autoFocus={true}
         />
-        <Button type="submit">
+        <StyledButton type="submit">
           <Icon />
-        </Button>
-      </Form>
+        </StyledButton>
+      </StyledForm>
+      </Formik>
       {loading && <Loader />}
       {movies && <MovieList movies={movies} />}
       {error && <p>Something went wrong, please try again later!</p>}

@@ -1,4 +1,5 @@
-import { useLocation } from 'react-router-dom';
+import { Suspense } from "react";
+import {Outlet} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   Wrapper,
@@ -15,7 +16,7 @@ import {
   NavLinkStyle,
 } from './MovieDetails.style';
 
-export const MovieDetails = ({ movie }) => {
+export const MovieDetails = ({ movie, location }) => {
   const {
     original_title,
     genres,
@@ -26,7 +27,6 @@ export const MovieDetails = ({ movie }) => {
   } = movie;
 
   const genresAll = genres.map(genre => genre.name).join(', ');
-  const location = useLocation();
 
   return (
     <>
@@ -50,13 +50,16 @@ export const MovieDetails = ({ movie }) => {
         </Info>
       </Wrapper>
       <Information>
-        <NavLinkStyle to="cast" state={location.state}>
+        <NavLinkStyle to="cast" state={{from: location}}>
           Cast
         </NavLinkStyle>
-        <NavLinkStyle to="reviews" state={location.state}>
+        <NavLinkStyle to="reviews" state={{from: location}}>
           Reviews
         </NavLinkStyle>
       </Information>
+      <Suspense>
+        <Outlet />
+      </Suspense>
     </>
   );
 };

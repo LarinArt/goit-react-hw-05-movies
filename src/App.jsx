@@ -1,38 +1,26 @@
-import { lazy, Suspense } from 'react';
+import { SharedLayout } from 'Layout/SharedLayout';
+import { lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { Header } from './components/Header/Header';
-import { Loader } from './components/Loader/Loader';
-import BgImg from './images/videoImage.jpg';
-import styled from 'styled-components';
 
-const HomePage = lazy(() => import('./components/Pages/HomePage/HomePage'));
-const MoviePage = lazy(() => import('./components/Pages/MoviePage/MoviePage'));
-const MovieDetailsPage = lazy(() =>
-  import('./components/Pages/MovieDetailsPage/MovieDetailsPage')
-);
-
-const AppWrapper = styled.div`
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  background-image: url(${BgImg});
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-`;
+const HomePage = lazy(() => import('Pages/HomePage/HomePage'));
+const MoviePage = lazy(() => import('Pages/MoviePage/MoviePage'));
+const MovieDetailsPage = lazy(() => import('Pages/MovieDetailsPage'));
+const CastPage = lazy(() => import('Pages/CastPage'));
+const ReviewsPage = lazy(() => import('Pages/ReviewsPage'));
 
 export const App = () => {
   return (
-    <AppWrapper>
-      <Header />
-      <Suspense fallback={<Loader />}>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="movies" element={<MoviePage />} />
-          <Route path="movies/:movieId/*" element={<MovieDetailsPage />} />
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-      </Suspense>
-    </AppWrapper>
+    <Routes>
+      <Route path="/" element={<SharedLayout />}>
+        <Route index element={<Navigate to="home" />} />
+        <Route path="home" element={<HomePage />} />
+        <Route path="movies" element={<MoviePage />} />
+        <Route path="movies/:movieId/*" element={<MovieDetailsPage />}>
+          <Route path="cast" element={<CastPage />} />
+          <Route path="reviews" element={<ReviewsPage />} />
+        </Route>
+        <Route path="*" element={<Navigate to="home" />} />
+      </Route>
+    </Routes>
   );
 };

@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import { Form, Field } from 'formik';
 import { FcSearch } from 'react-icons/fc';
 
-export const Form = styled.form`
+export const StyledForm = styled(Form)`
   position: fixed;
   top: 10px;
   z-index: 101;
@@ -10,7 +11,7 @@ export const Form = styled.form`
   margin-left: 270px;
 `;
 
-export const Input = styled.input`
+export const StyledInput = styled(Field)`
   width: 400px;
   height: 25px;
   border-radius: 5px;
@@ -20,7 +21,7 @@ export const Input = styled.input`
   background-color: blanchedalmond;
 `;
 
-export const Button = styled.button`
+export const StyledButton = styled.button`
   display: flex;
   width: 30px;
   height: 30px;
