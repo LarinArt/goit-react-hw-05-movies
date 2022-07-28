@@ -14,12 +14,6 @@ export const Img = styled.img`
   border-radius: 5px;
   transform: scale(1);
   transition: all 250ms linear;
-
-  &:hover,
-  &:focus {
-    transform: scale(1.2);
-    transition: all 250ms linear;
-  }
 `;
 
 export const Info = styled.div`

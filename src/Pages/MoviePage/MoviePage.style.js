@@ -3,12 +3,12 @@ import { Form, Field } from 'formik';
 import { FcSearch } from 'react-icons/fc';
 
 export const StyledForm = styled(Form)`
-  position: fixed;
+  margin-top: 20px;
   top: 10px;
   z-index: 101;
   display: flex;
   align-items: center;
-  margin-left: 270px;
+  justify-content: center;
 `;
 
 export const StyledInput = styled(Field)`

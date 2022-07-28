@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getTrending } from 'services/movie-api';
 import { Loader } from 'components/Loader/Loader';
 import { MovieList } from 'components/MovieList/MovieList';
-import { Trending } from './HomePage.style';
+import { Title } from './HomePage.style';
 
 const HomePage = () => {
   const [movies, setMovies] = useState(null);
@@ -16,7 +16,7 @@ const HomePage = () => {
 
   return (
     <>
-      <Trending>Trending Movies</Trending>
+      <Title>Trending Movies</Title>
       {!movies && <Loader />}
       {movies && <MovieList movies={movies} />}
       {error && <p>Something went wrong, please try again later!</p>}

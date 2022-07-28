@@ -1,19 +1,19 @@
-import { useState, useEffect, lazy } from 'react';
+import { useState, useEffect } from 'react';
 import {
   useParams,
   useNavigate,
   useLocation,
-  Routes,
-  Route,
+  // Routes,
+  // Route,
 } from 'react-router-dom';
 import { getDetails } from 'services/movie-api';
 import { Loader } from 'components/Loader/Loader';
 import { MovieDetails } from 'components/MovieDetails/MovieDetails';
-
+import Notiflix from 'notiflix';
 import { Button } from './MovieDetailsPage.style';
 
-const CastPage = lazy(() => import('../CastPage'));
-const ReviewsPage = lazy(() => import('../ReviewsPage'));
+// const CastPage = lazy(() => import('../CastPage'));
+// const ReviewsPage = lazy(() => import('../ReviewsPage'));
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
@@ -39,11 +39,14 @@ const MovieDetailsPage = () => {
       </Button>
       {!movie && <Loader />}
       {movie && <MovieDetails movie={movie} />}
-      {error && <p>Something went wrong, please try again later!</p>}
-      <Routes>
+      {error &&
+        Notiflix.Notify.failure(
+          'Something went wrong, please try again later!'
+        )}
+      {/* <Routes>
         <Route path="cast" element={<CastPage />} />
         <Route path="reviews" element={<ReviewsPage />} />
-      </Routes>
+      </Routes> */}
     </>
   );
 };

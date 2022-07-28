@@ -19,8 +19,9 @@ const MoviePage = () => {
       Notiflix.Notify.failure("Please, enter correct movie's name");
       return;
     } else {
-      const newQuery = value.query !== '' ?  value.query : '';
-      setSearchParams({ 'query': newQuery });}
+      const newQuery = value.query !== '' ? value.query : '';
+      setSearchParams({ query: newQuery });
+    }
   };
 
   useEffect(() => {
@@ -42,22 +43,18 @@ const MoviePage = () => {
 
   return (
     <>
-    <Formik
+      <Formik
         initialValues={{ query: '' }}
         onSubmit={value => {
           onFormSubmit(value);
         }}
       >
-      <StyledForm>
-        <StyledInput
-          type="text"
-          name="query"
-          autoFocus={true}
-        />
-        <StyledButton type="submit">
-          <Icon />
-        </StyledButton>
-      </StyledForm>
+        <StyledForm>
+          <StyledInput type="text" name="query" autoFocus={true} />
+          <StyledButton type="submit">
+            <Icon />
+          </StyledButton>
+        </StyledForm>
       </Formik>
       {loading && <Loader />}
       {movies && <MovieList movies={movies} />}

@@ -26,6 +26,7 @@ export const Reviews = ({ reviews }) => {
       </>
     );
   }
+  return <></>;
 };
 
 Reviews.propTypes = {

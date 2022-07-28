@@ -7,6 +7,8 @@ import {
   TitleWrapper,
   Title,
 } from './MovieListItem.style';
+import NoImage from 'images/No_image_available.svg.png';
+import { IMG_URL } from 'constants';
 
 export const MovieListItem = ({ movie }) => {
   const { poster_path, name, title, id } = movie;
@@ -22,11 +24,7 @@ export const MovieListItem = ({ movie }) => {
       <ItemWrapper>
         <li>
           <Img
-            src={
-              poster_path
-                ? `https://image.tmdb.org/t/p/w300/${poster_path}`
-                : 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png'
-            }
+            src={poster_path ? `${IMG_URL}${poster_path}` : `${NoImage}`}
             alt={title}
           />
         </li>

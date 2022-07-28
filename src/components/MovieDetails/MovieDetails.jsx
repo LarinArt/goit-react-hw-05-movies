@@ -1,5 +1,6 @@
-import { Suspense } from "react";
-import {Outlet} from 'react-router-dom';
+import { Suspense } from 'react';
+import { Outlet } from 'react-router-dom';
+import NoImage from 'images/No_image_available.svg.png';
 import PropTypes from 'prop-types';
 import {
   Wrapper,
@@ -15,6 +16,7 @@ import {
   Information,
   NavLinkStyle,
 } from './MovieDetails.style';
+import { IMG_URL } from 'constants';
 
 export const MovieDetails = ({ movie, location }) => {
   const {
@@ -32,11 +34,7 @@ export const MovieDetails = ({ movie, location }) => {
     <>
       <Wrapper>
         <Img
-          src={
-            poster_path
-              ? `https://image.tmdb.org/t/p/w300/${poster_path}`
-              : 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png'
-          }
+          src={poster_path ? `${IMG_URL}${poster_path}` : `${NoImage}`}
           alt={original_title}
         />
         <Info>
@@ -50,10 +48,10 @@ export const MovieDetails = ({ movie, location }) => {
         </Info>
       </Wrapper>
       <Information>
-        <NavLinkStyle to="cast" state={{from: location}}>
+        <NavLinkStyle to="cast" state={{ from: location }}>
           Cast
         </NavLinkStyle>
-        <NavLinkStyle to="reviews" state={{from: location}}>
+        <NavLinkStyle to="reviews" state={{ from: location }}>
           Reviews
         </NavLinkStyle>
       </Information>
