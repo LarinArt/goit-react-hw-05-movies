@@ -1,5 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import noPoster from 'images/noPoster.png';
 import {
   MovieLink,
   ItemWrapper,
@@ -7,8 +8,7 @@ import {
   TitleWrapper,
   Title,
 } from './MovieListItem.style';
-import NoImage from 'images/No_image_available.svg.png';
-import { IMG_URL } from 'constants';
+import { getPosterLink } from 'utils/getPosterLink';
 
 export const MovieListItem = ({ movie }) => {
   const { poster_path, name, title, id } = movie;
@@ -23,10 +23,12 @@ export const MovieListItem = ({ movie }) => {
     >
       <ItemWrapper>
         <li>
-          <Img
-            src={poster_path ? `${IMG_URL}${poster_path}` : `${NoImage}`}
-            alt={title}
-          />
+        {poster_path ?
+              <Img src={getPosterLink(poster_path)}
+                alt={title}/> :
+              <Img src={noPoster}
+                alt='No Poster'/>
+              }
         </li>
         <TitleWrapper>
           <Title>{title ?? name}</Title>

@@ -1,13 +1,15 @@
-import { MdOutlineCameraswitch } from 'react-icons/md';
+import { RotatingLines } from 'react-loader-spinner';
 import { MovieLoader } from './Loader.style';
 
 export const Loader = () => {
   return (
     <MovieLoader>
-      <MdOutlineCameraswitch
-        width={'40px'}
-        height={'40px'}
-        fill={'currentColor'}
+      <RotatingLines
+        strokeColor="yellow"
+        strokeWidth="2"
+        animationDuration="1.75"
+        width="100"
+        visible={true}
       />
     </MovieLoader>
   );

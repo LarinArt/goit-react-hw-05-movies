@@ -7,7 +7,7 @@ import {
 import { getDetails } from 'services/movie-api';
 import { Loader } from 'components/Loader/Loader';
 import { MovieDetails } from 'components/MovieDetails/MovieDetails';
-import { Button } from './MovieDetailsPage.style';
+import { Button, Notify } from './MovieDetailsPage.style';
 
 
 
@@ -35,7 +35,7 @@ const MovieDetailsPage = () => {
       </Button>
       {!movie && <Loader />}
       {movie && <MovieDetails movie={movie} />}
-      {error && <p>Something went wrong, please try again later!</p>}
+      {error && <Notify>Something went wrong, please try again later!</Notify>}
     </>
   );
 };

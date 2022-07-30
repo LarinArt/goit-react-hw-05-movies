@@ -33,3 +33,8 @@ export const Content = styled.p`
   text-align: start;
   color: rgb(255, 215, 0);
 `;
+
+export const Notify = styled.p`
+  padding-left: 25px;
+  color: rgb(255, 215, 0);
+`;

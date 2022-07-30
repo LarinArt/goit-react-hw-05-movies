@@ -7,6 +7,7 @@ export const MovieHeader = styled.header`
   z-index: 100;
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   height: 50px;
   padding-left: 25px;
   background-color: rgb(255, 215, 0);

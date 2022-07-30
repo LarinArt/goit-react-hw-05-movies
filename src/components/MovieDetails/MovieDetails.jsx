@@ -1,7 +1,7 @@
-import { Suspense } from 'react';
-import { Outlet } from 'react-router-dom';
-import NoImage from 'images/No_image_available.svg.png';
+import { Suspense } from "react";
+import {Outlet} from 'react-router-dom';
 import PropTypes from 'prop-types';
+import noPoster from 'images/noPoster.png';
 import {
   Wrapper,
   Img,
@@ -16,7 +16,7 @@ import {
   Information,
   NavLinkStyle,
 } from './MovieDetails.style';
-import { IMG_URL } from 'constants';
+import { getPosterLink } from "utils/getPosterLink";
 
 export const MovieDetails = ({ movie, location }) => {
   const {
@@ -33,10 +33,12 @@ export const MovieDetails = ({ movie, location }) => {
   return (
     <>
       <Wrapper>
-        <Img
-          src={poster_path ? `${IMG_URL}${poster_path}` : `${NoImage}`}
-          alt={original_title}
-        />
+      {poster_path ?
+              <Img src={getPosterLink(poster_path)}
+                alt={original_title}/> :
+              <Img src={noPoster}
+                alt='No Poster'/>
+              }
         <Info>
           <InfoTitle>{original_title}</InfoTitle>
           <ReleaseDate> ({release_date})</ReleaseDate>
@@ -48,10 +50,10 @@ export const MovieDetails = ({ movie, location }) => {
         </Info>
       </Wrapper>
       <Information>
-        <NavLinkStyle to="cast" state={{ from: location }}>
+        <NavLinkStyle to="cast" state={{from: location}}>
           Cast
         </NavLinkStyle>
-        <NavLinkStyle to="reviews" state={{ from: location }}>
+        <NavLinkStyle to="reviews" state={{from: location}}>
           Reviews
         </NavLinkStyle>
       </Information>

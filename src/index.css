@@ -1,4 +1,4 @@
-@import-normalize; /* bring in normalize.css styles */
+
 
 body {
   margin: 0;
@@ -7,6 +7,13 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url(./images/videoImage.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+  height: 100%;
+  width: 100vw;
 }
 
 code {

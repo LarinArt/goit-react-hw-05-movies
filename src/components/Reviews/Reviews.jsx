@@ -6,14 +6,16 @@ import {
   Author,
   Created,
   Content,
+  Notify
 } from './Reviews.style';
 
 export const Reviews = ({ reviews }) => {
-  if ({ reviews }) {
     return (
-      <>
         <ReviewsWrapper>
-          <List>
+          {reviews.length === 0 ? 
+          <Notify>No reviews</Notify>
+          :
+          (<List>
             {reviews.map(({ id, created_at, content, author }) => (
               <Item key={id}>
                 <Author>{author}</Author>
@@ -21,12 +23,10 @@ export const Reviews = ({ reviews }) => {
                 <Content>{content}</Content>
               </Item>
             ))}
-          </List>
+          </List>)
+          }
         </ReviewsWrapper>
-      </>
     );
-  }
-  return <></>;
 };
 
 Reviews.propTypes = {

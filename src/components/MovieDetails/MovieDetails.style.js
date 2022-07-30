@@ -2,24 +2,22 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const Wrapper = styled.div`
+@media (min-width: 768px){
   display: flex;
   align-items: flex-start;
-  width: 1400px;
+}
   margin: 0 auto;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  margin: 25px;
+  background-color: rgba(0, 0, 0, 0.5);
 `;
 
 export const Img = styled.img`
   border-radius: 5px;
-  transform: scale(1);
-  transition: all 250ms linear;
 `;
 
 export const Info = styled.div`
   padding: 20px;
-  margin-left: 100px;
-  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%; 
 `;
 
 export const InfoTitle = styled.h1`

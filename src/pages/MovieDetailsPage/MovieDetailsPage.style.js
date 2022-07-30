@@ -20,3 +20,7 @@ export const Button = styled.button`
     transition: all 250ms linear;
   }
 `;
+export const Notify = styled.p`
+  padding-left: 25px;
+  color: rgb(255, 215, 0);
+`;

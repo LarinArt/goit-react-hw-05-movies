@@ -1,10 +1,10 @@
-import { Navigation } from 'layout/common/Navigation/Navigation';
+import { Navigation } from 'Layout/common/Navigation/Navigation';
 import { MovieHeader } from './Header.style';
 
 export const Header = () => {
   return (
     <MovieHeader>
-      <Navigation />
+        <Navigation />
     </MovieHeader>
   );
 };

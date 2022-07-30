@@ -8,8 +8,7 @@ export const MovieLink = styled(Link)`
 export const ItemWrapper = styled.div`
   width: 300px;
   flex-basis: calc(100% / 4 - 30px);
-  margin-top: 30px;
-  margin-left: 30px;
+  margin: 15px;
   border-radius: 5px;
   overflow: hidden;
   background-color: rgb(255, 215, 0);
