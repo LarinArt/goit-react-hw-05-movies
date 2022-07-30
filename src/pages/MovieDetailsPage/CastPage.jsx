@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getCast } from 'services/movie-api';
 import { Cast } from 'components/Cast/Cast';
 import { Loader } from 'components/Loader/Loader';
+import { Notify } from './MovieDetailsPage.style';
 
 const CastPage = () => {
   const { movieId } = useParams();
@@ -19,7 +20,9 @@ const CastPage = () => {
     <>
       {!cast && <Loader />}
       {cast && <Cast cast={cast} />}
-      {error && <p>Something went wrong, please try again later!</p>}
+      {error && (
+        <Notify>404 Something went wrong, please try again later! :(</Notify>
+      )}
     </>
   );
 };

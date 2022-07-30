@@ -19,7 +19,7 @@ const HomePage = () => {
       <Title>Trending Movies</Title>
       {!movies && <Loader />}
       {movies && <MovieList movies={movies} />}
-      {error && <p>Something went wrong, please try again later!</p>}
+      {error && <p>404, please try again later!</p>}
     </>
   );
 };

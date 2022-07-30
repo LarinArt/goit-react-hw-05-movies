@@ -21,6 +21,7 @@ export const Button = styled.button`
   }
 `;
 export const Notify = styled.p`
+  font-size: 20px;
   padding-left: 25px;
   color: rgb(255, 215, 0);
 `;
