@@ -2,10 +2,9 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Notiflix from 'notiflix';
 import { searchMovies } from 'services/movie-api';
-import { Loader } from 'components/Loader/Loader';
+import { Loader } from 'components/ui/Loader/Loader';
 import { MovieList } from 'components/MovieList/MovieList';
 import { SearchForm } from 'components/SearchForm/SearchForm';
-
 
 const MoviePage = () => {
   const [movies, setMovies] = useState(null);
@@ -35,13 +34,14 @@ const MoviePage = () => {
       Notiflix.Notify.failure("Please, enter correct movie's name");
       return;
     } else {
-      const newQuery = value.query !== '' ?  value.query : '';
-      setSearchParams({ 'query': newQuery });}
+      const newQuery = value.query !== '' ? value.query : '';
+      setSearchParams({ query: newQuery });
+    }
   };
 
   return (
     <>
-    <SearchForm onSubmit={onFormSubmit} value={searchParams.get('query')} />
+      <SearchForm onSubmit={onFormSubmit} value={searchParams.get('query')} />
       {loading && <Loader />}
       {movies && <MovieList movies={movies} />}
     </>

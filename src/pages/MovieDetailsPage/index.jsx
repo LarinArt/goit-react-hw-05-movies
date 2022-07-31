@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { getDetails } from 'services/movie-api';
-import { Loader } from 'components/Loader/Loader';
+import { Loader } from 'components/ui/Loader/Loader';
 import { MovieDetails } from 'components/MovieDetails/MovieDetails';
-import { Button, Error } from './MovieDetailsPage.style';
+import { CallbackButton } from 'components/ui/CallbackButton';
+import { Error } from 'components/ui/Error';
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
@@ -13,7 +14,7 @@ const MovieDetailsPage = () => {
   const location = useLocation();
 
   const onGoBack = () => {
-    navigate(location?.state?.from ?? '/home');
+    navigate(location?.state?.from ?? '/');
   };
 
   useEffect(() => {
@@ -24,9 +25,9 @@ const MovieDetailsPage = () => {
 
   return (
     <>
-      <Button type="button" onClick={onGoBack}>
+      <CallbackButton type="button" onClick={onGoBack}>
         To Movies
-      </Button>
+      </CallbackButton>
       {!movie && <Loader />}
       {movie && <MovieDetails movie={movie} />}
       {error && (

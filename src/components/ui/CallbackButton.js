@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Button = styled.button`
+export const CallbackButton = styled.button`
   display: block;
   width: 100px;
   height: 30px;
@@ -19,9 +19,4 @@ export const Button = styled.button`
     color: rgb(0, 87, 183);
     transition: all 250ms linear;
   }
-`;
-export const Error = styled.p`
-  font-size: 20px;
-  padding-left: 25px;
-  color: rgb(255, 215, 0);
 `;

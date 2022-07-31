@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getCast } from 'services/movie-api';
 import { Cast } from 'components/Cast/Cast';
-import { Loader } from 'components/Loader/Loader';
-import { Error } from './MovieDetailsPage.style';
+import { Loader } from 'components/ui/Loader/Loader';
+import { Error } from 'components/ui/Error';
 
 const CastPage = () => {
   const { movieId } = useParams();

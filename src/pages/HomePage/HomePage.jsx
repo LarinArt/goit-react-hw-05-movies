@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { getTrending } from 'services/movie-api';
-import { Loader } from 'components/Loader/Loader';
+import { Loader } from 'components/ui/Loader/Loader';
 import { MovieList } from 'components/MovieList/MovieList';
 import { Title } from './HomePage.style';
-import { Error } from 'pages/MovieDetailsPage/MovieDetailsPage.style';
+import { Error } from 'components/ui/Error';
 
 const HomePage = () => {
   const [movies, setMovies] = useState(null);

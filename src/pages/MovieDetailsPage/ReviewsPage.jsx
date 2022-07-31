@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getReviews } from 'services/movie-api';
 import { Reviews } from 'components/Reviews/Reviews';
-import { Loader } from 'components/Loader/Loader';
-import { Error } from './MovieDetailsPage.style';
+import { Loader } from 'components/ui/Loader/Loader';
+import { Error } from 'components/ui/Error';
 
 const ReviewsPage = () => {
   const { movieId } = useParams();
