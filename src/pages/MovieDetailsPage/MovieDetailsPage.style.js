@@ -20,7 +20,7 @@ export const Button = styled.button`
     transition: all 250ms linear;
   }
 `;
-export const Notify = styled.p`
+export const Error = styled.p`
   font-size: 20px;
   padding-left: 25px;
   color: rgb(255, 215, 0);

@@ -3,6 +3,7 @@ import { getTrending } from 'services/movie-api';
 import { Loader } from 'components/Loader/Loader';
 import { MovieList } from 'components/MovieList/MovieList';
 import { Title } from './HomePage.style';
+import { Error } from 'pages/MovieDetailsPage/MovieDetailsPage.style';
 
 const HomePage = () => {
   const [movies, setMovies] = useState(null);
@@ -19,7 +20,7 @@ const HomePage = () => {
       <Title>Trending Movies</Title>
       {!movies && <Loader />}
       {movies && <MovieList movies={movies} />}
-      {error && <p>404, please try again later!</p>}
+      {error && <Error>404, please try again later!</Error>}
     </>
   );
 };

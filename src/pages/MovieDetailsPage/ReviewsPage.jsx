@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getReviews } from 'services/movie-api';
 import { Reviews } from 'components/Reviews/Reviews';
 import { Loader } from 'components/Loader/Loader';
-import { Notify } from './MovieDetailsPage.style';
+import { Error } from './MovieDetailsPage.style';
 
 const ReviewsPage = () => {
   const { movieId } = useParams();
@@ -21,7 +21,7 @@ const ReviewsPage = () => {
       {!reviews && <Loader />}
       {reviews && <Reviews reviews={reviews} />}
       {error && (
-        <Notify>404 Something went wrong, please try again later! :(</Notify>
+        <Error>404 Something went wrong, please try again later! :(</Error>
       )}
     </>
   );
